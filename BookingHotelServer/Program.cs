@@ -1,3 +1,5 @@
+using BookingHotelBusiness.Repository;
+using BookingHotelBusiness.Repository.IRepository;
 using BookingHotelDataAccess.Data;
 using BookingHotelServer.Data;
 using Microsoft.AspNetCore.Components;
@@ -16,6 +18,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 });
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IHotelRoomRepository, HotelRoomRepository>();
+
 
 var app = builder.Build();
 

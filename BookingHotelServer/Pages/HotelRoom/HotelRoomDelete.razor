@@ -1,0 +1,83 @@
+﻿@page "/hotel-room/delete/{Id:int}"
+@inject IHotelRoomRepository HotelRoomRepository;
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JsRuntime
+
+
+<div class="row mt-2 mb-5">
+    <h3 class="card-title text-info mb-3 ml-3">@Title Hotel Room</h3>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <EditForm Model="@HotelRoomModel" OnValidSubmit="HandleHotelRoomDelete" disabled>
+                    <div class="">
+                        <label>Name</label>
+                        <InputText @bind-Value="@HotelRoomModel.Name" class="form-control" ></InputText>
+                    </div>
+                    <div class="">
+                        <label>Occupancy</label>
+                        <InputNumber @bind-Value="@HotelRoomModel.Occupancy" class="form-control" ></InputNumber>
+                    </div>
+                    <div class="">
+                        <label>Rate</label>
+                        <InputNumber @bind-Value="@HotelRoomModel.RegularRate" class="form-control" ></InputNumber>
+
+                    </div>
+                    <div class="">
+                        <label>Sq Ft.</label>
+                        <InputText @bind-Value="@HotelRoomModel.SqFt" class="form-control" ></InputText>
+                    </div>
+                    <div class="mb-3">
+                        <label>Details</label>
+                        <InputTextArea @bind-Value="@HotelRoomModel.Details" class="form-control" ></InputTextArea>
+                    </div>
+                    <div class="">
+                        <button class="btn btn-outline-danger" >@Title</button>
+                        <NavLink href="hotel-room" class="btn btn-outline-secondary">Back to Index</NavLink>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+    private HotelRoomDTO HotelRoomModel { get; set; } = new HotelRoomDTO();
+
+    private string Title { get; set; } = "Delete";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != null)
+        {
+            //Update
+            Title = "Delete";
+            HotelRoomModel =await HotelRoomRepository.GetHotelRoom(Id.Value);
+            
+        }
+
+    }
+
+    private async Task HandleHotelRoomDelete()
+    {
+        try
+        {
+            if (HotelRoomModel.Id != 0)
+            {
+                //Delete
+                await HotelRoomRepository.DeleteHotelRoom(HotelRoomModel.Id);
+                JsRuntime.SwAlert("success", "Room deleted");
+            }
+            
+        }
+        catch (Exception ex)
+        {
+            
+            throw;
+        }
+        NavigationManager.NavigateTo("hotel-room");
+    }
+
+}

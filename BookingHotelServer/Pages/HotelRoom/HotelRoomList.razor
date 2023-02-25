@@ -1,0 +1,64 @@
+﻿@page "/hotel-room"
+@inject IHotelRoomRepository HotelRoomRepository
+
+<div class="row mt-4">
+    <div class="col-8">
+        <h4 class="card-title text-info">Hotel Room's</h4>
+    </div>
+    <div class="col-3 offset-1">
+        <NavLink href="hootel-room/create" class="btn btn-outline-info form-control">
+            Add New Room
+        </NavLink>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Occupancy</th>
+                    <th>Rate</th>
+                    <th>SqFt.</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (HotelRooms.Any())
+                {
+                    @foreach (HotelRoomDTO hotelRoom in HotelRooms)
+                    {
+                        <tr>
+                            <td>@hotelRoom.Name</td>
+                            <td>@hotelRoom.Occupancy</td>
+                            <td>@hotelRoom.RegularRate.ToString("c")</td>
+                            <td>@hotelRoom.SqFt</td>
+                            <td width="15%">
+                                <NavLink href="@($"/hotel-room/edit/{hotelRoom.Id}")" class="btn btn-outline-info">Edit</NavLink>
+                                <NavLink class="btn btn-outline-danger" href="@($"/hotel-room/delete/{hotelRoom.Id}")">Delete</NavLink>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5">There is no room to show!</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private IEnumerable<HotelRoomDTO> HotelRooms{ get; set; }=new List<HotelRoomDTO>();
+
+    protected override async  Task OnInitializedAsync()
+    {
+        HotelRooms = await HotelRoomRepository.GetAllHotelRooms();
+
+    }
+
+}

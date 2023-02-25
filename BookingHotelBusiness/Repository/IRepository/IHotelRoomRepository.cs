@@ -13,7 +13,7 @@ namespace BookingHotelBusiness.Repository.IRepository
         Task<HotelRoomDTO> UpdateHotelRoom(int roomId,HotelRoomDTO hotelRoomDTO);
         Task<HotelRoomDTO> GetHotelRoom(int roomId);
         Task<IEnumerable<HotelRoomDTO>> GetAllHotelRooms();
-        Task<HotelRoomDTO>IsRoomUnique(string name);
+        Task<HotelRoomDTO>IsRoomUnique(string name,int roomId=0);
         Task<int>DeleteHotelRoom(int roomId);
     }
 }
