@@ -50,7 +50,7 @@ public class HotelRoomRepository : IHotelRoomRepository
     {
         try
         {
-            return  _mapper.Map<IEnumerable<HotelRoom>, IEnumerable<HotelRoomDTO>>(_db.HotelRooms);
+            return  _mapper.Map<IEnumerable<HotelRoom>, IEnumerable<HotelRoomDTO>>(_db.HotelRooms.Include(x=>x.HotelRoomImages));
         }
         catch (Exception ex)
         {
@@ -64,7 +64,7 @@ public class HotelRoomRepository : IHotelRoomRepository
         try
         {
             HotelRoomDTO hotelRoomDTO= _mapper.Map<HotelRoom,HotelRoomDTO>(
-                await _db.HotelRooms.FirstOrDefaultAsync(h=>h.Id==roomId)
+                await _db.HotelRooms.Include(h=>h.HotelRoomImages).FirstOrDefaultAsync(h=>h.Id==roomId)
                 );
             return hotelRoomDTO;
         }

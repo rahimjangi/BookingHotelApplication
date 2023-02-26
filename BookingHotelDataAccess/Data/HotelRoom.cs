@@ -23,5 +23,6 @@ namespace BookingHotelDataAccess.Data
         public DateTime CreatedDate { get; set; }= DateTime.Now;
         public string UpdatedBy { get; set; } = string.Empty;
         public DateTime UpdatedDate { get; set;}
+        public ICollection<HotelRoomImage> HotelRoomImages { get; set; }
     }
 }

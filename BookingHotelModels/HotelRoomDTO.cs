@@ -20,4 +20,6 @@ public class HotelRoomDTO
     public string Details { get; set; } = string.Empty;
     public string SqFt { get; set; } = string.Empty;
     public string CreatedBy { get; set; } = string.Empty;
+    public virtual IEnumerable<HotelRoomImageDTO> HotelRoomImages { get; set; }
+    public List<string> ImageUrls { get; set; }= new List<string>();
 }

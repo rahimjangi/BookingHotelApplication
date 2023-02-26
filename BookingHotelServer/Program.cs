@@ -2,6 +2,8 @@ using BookingHotelBusiness.Repository;
 using BookingHotelBusiness.Repository.IRepository;
 using BookingHotelDataAccess.Data;
 using BookingHotelServer.Data;
+using BookingHotelServer.Service;
+using BookingHotelServer.Service.IService;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +21,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IHotelRoomRepository, HotelRoomRepository>();
+builder.Services.AddScoped<IHotelRoomImagesRepository, HotelRoomImagesRepository>();
+builder.Services.AddScoped<IFileUpload, FileUpload>();
 
 
 var app = builder.Build();
