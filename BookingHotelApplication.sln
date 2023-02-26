@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingHotelServer", "BookingHotelServer\BookingHotelServer.csproj", "{2FA38610-E06C-4204-8A53-CD6A37D43B5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingHotelServer", "BookingHotelServer\BookingHotelServer.csproj", "{2FA38610-E06C-4204-8A53-CD6A37D43B5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingHotelDataAccess", "BookingHotelDataAccess\BookingHotelDataAccess.csproj", "{0DD090F4-E9A9-4797-BEA0-547E383DBBDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingHotelDataAccess", "BookingHotelDataAccess\BookingHotelDataAccess.csproj", "{0DD090F4-E9A9-4797-BEA0-547E383DBBDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingHotelCommon", "BookingHotelCommon\BookingHotelCommon.csproj", "{305CDC68-7776-46F3-A64D-9194C6BD0C5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingHotelCommon", "BookingHotelCommon\BookingHotelCommon.csproj", "{305CDC68-7776-46F3-A64D-9194C6BD0C5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingHotelBusiness", "BookingHotelBusiness\BookingHotelBusiness.csproj", "{860B0A6C-6723-4094-A777-DB123D82244C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingHotelBusiness", "BookingHotelBusiness\BookingHotelBusiness.csproj", "{860B0A6C-6723-4094-A777-DB123D82244C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingHotelModels", "BookingHotelModels\BookingHotelModels.csproj", "{FA33E177-C943-467E-8505-2351C207F02A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingHotelModels", "BookingHotelModels\BookingHotelModels.csproj", "{FA33E177-C943-467E-8505-2351C207F02A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
