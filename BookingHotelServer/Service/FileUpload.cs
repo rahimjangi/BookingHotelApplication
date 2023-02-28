@@ -1,4 +1,5 @@
 ﻿using BookingHotelServer.Service.IService;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
 namespace BookingHotelServer.Service;
@@ -6,10 +7,12 @@ namespace BookingHotelServer.Service;
 public class FileUpload : IFileUpload
 {
     private readonly IWebHostEnvironment _webHostEnvironment;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public FileUpload(IWebHostEnvironment webHostEnvironment)
+    public FileUpload(IWebHostEnvironment webHostEnvironment, IHttpContextAccessor httpContextAccessor)
     {
         _webHostEnvironment = webHostEnvironment;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public bool DeleteFile(string fileName)
@@ -55,7 +58,8 @@ public class FileUpload : IFileUpload
             {
                 memoryStreem.WriteTo(fs);
             }
-            var fullPath = $"RoomImages/{fileName}";
+            var url = $"{_httpContextAccessor.HttpContext.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host.Value}/";
+            var fullPath = $"{url}RoomImages/{fileName}";
             return fullPath;
         }
         catch (Exception ex)

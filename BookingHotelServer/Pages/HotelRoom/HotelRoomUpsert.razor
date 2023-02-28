@@ -7,6 +7,7 @@
 @inject IHotelRoomImagesRepository HotelRoomImagesRepository
 
 
+
 <div class="row mt-2 mb-5">
     <h3 class="card-title text-info mb-3 ml-3">@Title Hotel Room</h3>
     <div class="col-md-12">
@@ -193,7 +194,7 @@
                     {
                         foreach (var deletedImageName in DeletedImageNames)
                         {
-                            var imageName = deletedImageName.Replace($"RoomImages/", "");
+                            var imageName = deletedImageName.Replace($"{NavigationManager.BaseUri}RoomImages/", "");
                             var result = FileUpload.DeleteFile(imageName);
                             await HotelRoomImagesRepository.DeleteHotelImageByImageUrl(deletedImageName);
                         }
@@ -281,7 +282,7 @@
         try
         {
             var imageIndex = HotelRoomModel.ImageUrls.FindIndex(x => x == imageUrl);
-            var imageName = imageUrl.Replace($"RoomImages/","");
+            var imageName = imageUrl.Replace($"{NavigationManager.BaseUri}RoomImages/", "");
             //Create
             if(HotelRoomModel.Id==0 && Title == "Create")
             {
